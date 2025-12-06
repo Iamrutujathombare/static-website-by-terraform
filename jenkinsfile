@@ -18,7 +18,7 @@ pipeline {
 
         stage("Deploy to EC2") {
             steps {
-                sshagent(credentials: ['ec2-key']) {
+                sshagent(credentials: ['node-key']) {
                     sh """
                     ssh -o StrictHostKeyChecking=no $TARGET 'sudo rm -rf /var/www/html/*'
                     ssh -o StrictHostKeyChecking=no $TARGET 'sudo git clone https://github.com/Iamrutujathombare/static-website-project.git /var/www/html'
